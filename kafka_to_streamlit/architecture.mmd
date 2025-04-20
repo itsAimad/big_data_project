@@ -1,0 +1,30 @@
+stateDiagram-v2
+    %% System Workflow: Step-by-Step Data Flow
+    Data_Ingestion --> Data_Cleaning: Clean Data using SparkSQL
+    Data_Cleaning --> Model_Training: Train Model with SparkMLlib
+    Model_Training --> Model_Saving: Save Trained Model for Predictions
+
+    %% Real-Time Processing
+    Kafka_Producer --> Spark_Streaming: Send Real-Time Data
+    Spark_Streaming --> Model_Loading: Load the Saved Model
+    Model_Loading --> Predictions: Predict Malignant or Benign with Probability
+
+    %% Storage and Visualization
+    Predictions --> Kafka_Consumer: Publish Predictions
+    Kafka_Consumer --> PostgreSQL: Store Predictions for Analysis
+    Kafka_Consumer --> Hadoop: Store Historical Data
+    PostgreSQL --> Grafana: Real-Time Monitoring & Visualization
+    Kafka_Consumer --> Streamlit: Display Predictions in Real-Time UI
+
+    %% Technology Stack
+    state Big_Data_Architecture {
+        [*] --> SparkSQL: Cleans and Prepares Data
+        [*] --> SparkMLlib: Trains Machine Learning Model
+        [*] --> Kafka_Producer: Streams Incoming Data
+        [*] --> Spark_Streaming: Handles Real-Time Data Processing
+        [*] --> Model_Loading: Uses Trained Model for Predictions
+        [*] --> PostgreSQL: Stores Predictions for Monitoring
+        [*] --> Hadoop: Stores Large-Scale Historical Data
+        [*] --> Grafana: Provides Real-Time Data Visualization
+        [*] --> Streamlit: Interactive User Interface
+    }

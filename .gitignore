@@ -1,0 +1,10 @@
+# Exclude DockerLearn folder
+DockerLearn/
+
+# Exclude node_modules
+node_modules/
+
+# Common Node.js files to ignore
+package-lock.json
+npm-debug.log
+.env
