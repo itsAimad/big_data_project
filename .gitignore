@@ -2,7 +2,7 @@
 DockerLearn/
 
 # Exclude node_modules
-node_modules/
+node_app/
 
 # Common Node.js files to ignore
 package-lock.json
